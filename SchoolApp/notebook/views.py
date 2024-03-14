@@ -4,12 +4,12 @@ from django.http import HttpResponse
 
 
 def home(request):
-    return render(request,'notebook/login.html')
+    return render(request,'notebook/')
 
 def Grades(request):
     return render(request,'notebook/grades.html')
 
 def Log(request):
-    return render(request,'notebook/login-page.html')
+    return render(request,'notebook/login.html')
     
     
