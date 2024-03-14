@@ -4,12 +4,15 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
+from users.views import registerPage as auth_views
+
 
 urlpatterns = [
-     path('',views.home,name = 'Home-page'),
-     path('grades/',views.Grades,name = 'Your-Grades'),
-  
-]
+     path('',views,name = 'login'),
+     path('register/',auth_views,name = 'register-page'),
+     path('grades/',views.Grades,name = 'your-Grades'),
+     path('home/',views.home,name = 'home-page')
+  ]
 
 
 
