@@ -14,14 +14,14 @@ def registerPage(request):
             user=form.save()
             user.save()
             login(request, user)
-            redirect('home')
+            return redirect('home-page')
         else:
             messages.error(request, 'An error occurred during registration')
     return render(request,'users/register.html',{'form':form})
 
 def loginPage(request):
     if request.user.is_authenticated:
-        return redirect('home')
+        return redirect('home-page')
     if request.method == 'POST':
         username_or_email=request.POST.get('username_or_email')
         password=request.POST.get('password')
@@ -41,4 +41,4 @@ def loginPage(request):
 
 def logoutUser(request):
     logout(request)
-    return redirect('home')
+    return redirect('home-page')
