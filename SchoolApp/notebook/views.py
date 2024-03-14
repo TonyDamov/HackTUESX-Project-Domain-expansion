@@ -10,9 +10,9 @@ def home(request):
 
 
 def Materials(request):
-    material = Material.objects.all()
+    materials = Material.objects.all()
     
-    return render(request,'notebook/',{'materials':material})
+    return render(request,'notebook/materials.html',{'materials':materials})
 
 
 def Grades(request):
