@@ -11,7 +11,6 @@ def home(request):
 
 def Materials(request):
     materials = Material.objects.all()
-    
     return render(request,'notebook/materials-s.html',{'materials':materials})
 
 
