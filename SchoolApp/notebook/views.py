@@ -1,5 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 # Create your views here.
-def Home(request) :
-    return HttpResponse('Hi')
+
+
+def home(request):
+    return render(request,'notebook/base.html')
+
+def Grades(request):
+    return render(request,'')
