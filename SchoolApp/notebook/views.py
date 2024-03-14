@@ -7,4 +7,9 @@ def home(request):
     return render(request,'notebook/base.html')
 
 def Grades(request):
-    return render(request,'')
+    return render(request,'notebook/grades.html')
+
+def Log(request):
+    return render(request,'notebook/login-page.html')
+    
+    

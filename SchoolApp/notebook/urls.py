@@ -7,7 +7,8 @@ from django.conf import settings
 
 urlpatterns = [
      path('',views.home,name = 'Home-page'),
-     path('Grades/',views.Grades,name = 'Your-Grades')
+     path('Grades/',views.Grades,name = 'Your-Grades'),
+     path('Login/',views.Log,name = 'Login-page')
 ]
 
 
