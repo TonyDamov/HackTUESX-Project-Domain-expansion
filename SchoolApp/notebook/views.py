@@ -13,7 +13,7 @@ def home(request):
 def Materials(request):
     materials = Material.objects.all()
     return render(request,'notebook/materials.html',{'materials':materials})
-
+"""
 class MaterialsListView(ListView):
     model = Material
     template_name = 'notebook/materials.html'
@@ -23,7 +23,7 @@ class MaterialsListView(ListView):
 class MaterialsDetailView(DetailView):
     model = Material
     context_object_name = 'materials'
-
+"""
 def Grades(request):
     grades = Grade.objects.all()
     

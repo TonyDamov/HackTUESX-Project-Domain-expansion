@@ -14,7 +14,7 @@ class Material(models.Model) :
     file = models.FileField()
     title = models.CharField(max_length=128)
     description = models.TextField()
-    date_posted = models.DateTimeField(default = timezone.now)
+    #date_posted = models.DateTimeField(default = timezone.now)
     user = models.ForeignKey(User, models.CASCADE)
     group = models.ManyToManyField(User, related_name='materials')
     def __str__(self) -> str :
