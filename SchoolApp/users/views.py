@@ -13,7 +13,7 @@ def registerPage(request):
         if form.is_valid:
             user=form.save()
             login(request,user)
-            redirect('')
+            redirect('home-page')
         else:
             messages.error(request, 'An error occurred during registration')
     return render(request,'users/register.html',{'form':form})

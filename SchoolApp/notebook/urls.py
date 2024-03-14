@@ -8,9 +8,9 @@ from users.views import registerPage as auth_views
 
 
 urlpatterns = [
-     path('',views,name = 'login'),
+     #path('',,name = 'login'),
      path('register/',auth_views,name = 'register-page'),
-     path('grades/',views.Grades,name = 'your-Grades'),
+     path('grades/',views.Grades,name = 'your-grades'),
      path('home/',views.home,name = 'home-page')
   ]
 
