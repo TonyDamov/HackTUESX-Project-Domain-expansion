@@ -15,21 +15,12 @@
     {% include "notebook/navbar.html" %}
     {% block navbar %}{% endblock %}
     <div class="center">
-        <form>
-          <div class="mb-3">
-            <label for="input" class="form-label">Enter username or email</label>
-            <input type="usernameOrEmail" class="form-control" id="inputNameOrEmail">
-          </div>
-          <div class="mb-3">
-            <label for="inputPassword" class="form-label">Password</label>
-            <input type="password" class="form-control" id="inputPassword">
-          </div>
-          <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="check">
-            I accept the 
-            <a class="form-check-label" for="check">terms of service</a>
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+        <form method="POST" action="">
+          {% csrf_token %}
+         <label>Enter name or password</label>
+         <input id="username_or_email" name="username_or_email">
+         <labe>Password</labe>
+         <input id="password" name="password" type="password">
         </form>
       </div>
 </body>

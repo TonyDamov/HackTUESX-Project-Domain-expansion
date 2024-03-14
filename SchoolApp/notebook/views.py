@@ -11,8 +11,7 @@ def home(request):
 
 def Materials(request):
     materials = Material.objects.all()
-    
-    return render(request,'notebook/materials-s.html',{'materials':materials})
+    return render(request,'notebook/materials.html',{'materials':materials})
 
 
 def Grades(request):
