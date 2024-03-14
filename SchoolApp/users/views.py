@@ -13,9 +13,10 @@ def registerPage(request):
         if form.is_valid():
             #form.save()
             #user.save()
-            form.save()
             user=form.save()
+            user.save()
             login(request, user)
+
             #redirect('home-page')
         else:
             messages.error(request, 'An error occurred during registration')
