@@ -8,6 +8,6 @@ from . import views
 from . import views as user_views
 
 urlpatterns = [
-   #path('',user_views.,name = 'login'),
+   #path('',user_views.,name = 'login-page'),
    path('register/',views.registerPage,name = 'register-page'),
 ]

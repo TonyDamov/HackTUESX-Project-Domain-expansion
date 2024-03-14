@@ -6,13 +6,13 @@ from .models import Grade,Material
 
 
 def home(request):
-    return render(request,'notebook/navbar.html')
+    return render(request,'notebook/homepage.html')
 
 
 def Materials(request):
     materials = Material.objects.all()
     
-    return render(request,'notebook/materials.html',{'materials':materials})
+    return render(request,'notebook/materials-s.html',{'materials':materials})
 
 
 def Grades(request):
