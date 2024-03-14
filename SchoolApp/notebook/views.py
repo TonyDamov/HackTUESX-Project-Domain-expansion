@@ -5,7 +5,7 @@ from .models import Grade
 
 
 def home(request):
-    return render(request,'notebook/base.html')
+    return render(request,'notebook/login-page.html')
 
 def Grades(request):
     grades = Grade.objects.all()
