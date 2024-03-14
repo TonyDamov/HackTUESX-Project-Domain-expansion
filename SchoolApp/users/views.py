@@ -35,8 +35,9 @@ def loginPage(request):
 
         if user is not None:
             login(request,user)
+            return redirect('home-page')
         else:
-            messages.error(request, 'User does not exist')
+            messages.error(request, 'Invalid username or password')
     return render(request,'users/login.html')
 
 def logoutUser(request):
