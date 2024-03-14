@@ -9,5 +9,5 @@ from . import views as user_views
 
 urlpatterns = [
    #path('',user_views.,name = 'login'),
-   path('user/register.html',views.registerPage,name = 'register-page'),
+   path('register/',views.registerPage,name = 'register-page'),
 ]
