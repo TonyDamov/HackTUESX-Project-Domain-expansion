@@ -17,10 +17,12 @@
     <div class="center">
         <form method="POST" action="">
           {% csrf_token %}
-         <label>Enter name or password</label>
-         <input id="username_or_email" name="username_or_email">
-         <labe>Password</labe>
-         <input id="password" name="password" type="password">
+         <label for="username_or_email">Enter name or email</label>
+         <input id="username_or_email" name="username_or_email" required>
+
+         <labe for="password">Password</labe>
+         <input id="password" name="password" type="password" required>
+         <button type="submit" >Login</button>
         </form>
       </div>
 </body>
