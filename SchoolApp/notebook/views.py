@@ -4,7 +4,7 @@ from django.shortcuts import render
 
 
 def home(request):
-    return render(request,'notebook/')
+    return render(request,'notebook/base.html')
 
 def Grades(request):
     return render(request,'')
