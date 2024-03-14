@@ -15,3 +15,6 @@ class Material(models.Model) :
     description = models.TextField()
     user = models.ForeignKey(User, models.CASCADE)
     group = models.ManyToManyField(User, related_name='materials')
+    def __str__(self) -> str :
+        return f'{self.user} - {self.title}'
+    
