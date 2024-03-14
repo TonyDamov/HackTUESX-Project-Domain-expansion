@@ -6,7 +6,7 @@ from .models import Grade,Material
 
 
 def home(request):
-    return render(request,'users/navbar.html')
+    return render(request,'notebook/navbar.html')
 
 
 def Materials(request):
