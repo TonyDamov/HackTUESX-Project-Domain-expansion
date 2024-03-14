@@ -4,7 +4,7 @@ from django.http import HttpResponse
 
 
 def home(request):
-    return render(request,'notebook/login-page.html')
+    return render(request,'notebook/login.html')
 
 def Grades(request):
     return render(request,'')
