@@ -1,7 +1,9 @@
 from django.contrib import admin
-from .models import Grade
+from .models import Grade, Material
 # Register your models here.
 
-@admin.register(Grade)
-class GradeAdmin(admin.ModelAdmin) :
-    list_display = ('grade', 'user')
+#@admin.register(Grade)
+#class GradeAdmin(admin.ModelAdmin) :
+    #list_display = ('grade', 'user')
+admin.site.register(Grade)
+admin.site.register(Material)
