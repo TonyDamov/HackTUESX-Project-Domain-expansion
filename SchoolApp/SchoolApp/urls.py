@@ -24,7 +24,7 @@ from users import views as user_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('materials/',note_views.Material,name = 'material-page'),
+    path('materials/',note_views.Materials,name = 'material-page'),
     path('grades/',note_views.Grades,name = 'your-grades'),
     path('home/',note_views.home,name = 'home-page'),
     path('',user_views.loginPage,name = 'login-page'),
