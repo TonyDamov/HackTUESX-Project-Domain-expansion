@@ -38,3 +38,7 @@ def loginPage(request):
         else:
             messages.error(request, 'User does not exist')
     return render(request,'users/login.html')
+
+def logoutUser(request):
+    logout(request)
+    return redirect('home')
