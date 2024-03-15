@@ -26,7 +26,7 @@ from django.views.generic import ListView, DetailView, DeleteView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('materials/',note_views.Materials,name = 'material-page'),
-    path('grades/',note_views.Grades,name = 'your-grades'),
+    path('grades/',note_views.Grades,name = 'grades-page'),
     path('',note_views.home,name = 'home-page'),
     path('login/',user_views.loginPage,name = 'login-page'),
     path('register/',user_views.registerPage,name = 'register-page'),
