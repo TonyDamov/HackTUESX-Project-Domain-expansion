@@ -2,39 +2,47 @@
 {% block content %}
 <body>
     {% for material in materials %}
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">{{material.user}}: {{material.title}}</h5>
-          <p class="card-text">{{material.description}}</p>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal{{material.id}}">
-            Open
-          </button>
+    <div style="padding-left: 16rem;">
+      <div style="padding-top: 2rem;">
+        <div class="card custom-card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">{{material.user}}: {{material.title}}</h5>
+            <p class="card-text">{{material.description}}</p>
+            <button type="button" class="btn btn-primary download-btn" data-toggle="modal" data-target="#myModal{{material.id}}">
+                Open
+            </button>
           
-          <div class="modal" id="myModal{{material.id}}">
-            <div class="modal-dialog modal-lg modal-dialog-centered">
-              <div class="modal-content">
-              
-                <div class="modal-header">
-                  <h4 class="modal-title">{{material.title}}</h4>
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <div class="modal" id="myModal{{material.id}}">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content">
+                  
+                        <div class="modal-header">
+                            <h4 class="modal-title">{{material.title}}</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                      
+                        <div class="modal-body">
+                            <p>{{material.description}}</p>
+                        </div>
+                      
+                        <div class="modal-footer">
+                            <a class="btn btn-primary float-left" href="{{ material.image_url }}" download>
+                                Download {{ material.file }}
+                            </a>
+                        </div>
+  
+                    </div>
                 </div>
-                
-                <div class="modal-body">
-                  <p>{{material.description}}</p>
-                </div>
-                
-                <div class="modal-footer">
-                  <a class="btn btn-primary float-right" href="{{ material.image_url }}" download>
-                      Download {{ material.file }}
-                  </a>
-                </div>
-
-              </div>
             </div>
-          </div>
         </div>
-    </div>
+      </div> 
+    </div>  
     {% endfor %}
+    <style>
+      .custom-card {
+          width: 80% !important;
+      }
+  </style> 
 </body>
 {% endblock content %}
     
