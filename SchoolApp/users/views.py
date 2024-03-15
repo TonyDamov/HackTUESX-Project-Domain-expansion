@@ -13,6 +13,8 @@ def userProfile(request, pk):
 
 
 def registerPage(request):
+    if request.user.is_authenticated:
+        return redirect('home-page')
     form=MyUserCreationForm()
     if request.method == 'POST':
         form=MyUserCreationForm(request.POST)
