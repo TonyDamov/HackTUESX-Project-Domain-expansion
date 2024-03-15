@@ -96,5 +96,19 @@ def deleteMaterial(request, pk):
     else:
         return redirect('home-page')
 
+def createGrade(request):
+    if request.user.role == 'Teacher':
+        form=MaterialForm()
+        if request.method == 'POST':
+            Material.objects.create(
+                user=request.user,
+                title=request.POST.get('title'),
+                description=request.POST.get('description'),
+                file=request.FILES['file']
+            )
+
+    else:
+        return redirect('home-page')
+    #return render(request,'notebook/materials_create.html',{'form':form})
 
 
