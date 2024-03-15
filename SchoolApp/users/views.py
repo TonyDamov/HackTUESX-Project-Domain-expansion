@@ -114,6 +114,9 @@ def logoutUser(request):
     logout(request)
     return redirect('login-page')
 
+def profilePage(request):
+    return render(request, "users/edituser.html")
+
 
 @login_required(login_url='login')
 def editUser(request):
