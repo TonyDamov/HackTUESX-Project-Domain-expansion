@@ -6,11 +6,11 @@
         <div class="card-body">
           <h5 class="card-title">{{material.user}}: {{material.title}}</h5>
           <p class="card-text">{{material.description}}</p>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal{{material.id}}">
             Open
           </button>
           
-          <div class="modal" id="myModal">
+          <div class="modal" id="myModal{{material.id}}">
             <div class="modal-dialog modal-lg modal-dialog-centered">
               <div class="modal-content">
               
@@ -24,7 +24,7 @@
                 </div>
                 
                 <div class="modal-footer">
-                  <a class="btn btn-primary float-right" href="{{ material.file }}" download>
+                  <a class="btn btn-primary float-right" href="{{ material.image_url }}" download>
                       Download {{ material.file }}
                   </a>
                 </div>
