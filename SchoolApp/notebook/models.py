@@ -20,3 +20,10 @@ class Material(models.Model) :
     def __str__(self) -> str :
         return f'{self.user} - {self.title}'
     
+    @property
+    def image_url(self):
+        if self.file and hasattr(self.file, 'url'):
+            return self.file.url
+        else:
+            return ""
+    
