@@ -16,8 +16,6 @@ def userProfile(request, pk):
 
 
 def registerPage(request):
-    
-
     if request.method == "POST":
         username = request.POST["username"]
         email = request.POST["email"]

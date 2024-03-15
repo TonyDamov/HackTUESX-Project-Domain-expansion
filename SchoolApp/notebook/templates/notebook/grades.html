@@ -1,14 +1,18 @@
 {% extends "notebook/base.html" %}
 {% block content %}
-{% for subject in subjects %}
-<h3>{{ subject.title }}</h3>
-<ul>
-    {% for grade in grades %}
-        {% if grade.subject == subject %}
-            <li>{{ grade.grade }}</li>
-        {% endif %}
-    {% endfor %}
-</ul>
-{% endfor %}
+
+    <h2>Grades</h2>
+
+    {% if request.user.role == 'Student' %}
+        {% for grade in grades %}
+            <p>{{ grade.subject.title }} - {{ grade.grade }}</p>
+        {% endfor %}
+    {% else %}
+        {% for subject, student_grades in data.items %}
+            <p>{{ subject }}</p>
+            {% for student, grades in student_grades.items %}
+                <p>{{ student }} - {{ grades|join:", " }}</p>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
 {% endblock content %}
-    

@@ -19,16 +19,31 @@ def Materials(request):
     return render(request,'notebook/materials.html',{'materials':materials})
 
 def Grades(request):
-    
+        
+    grades = []
+    data = {}
+    subjects = []
+    print(request.user.role)
     if request.user.role == 'Student':
-        grades = Grade.objects.filter(user=request.user).values('subject__title', 'grade')
-        subjects = []
+        grades = Grade.objects.filter(user=request.user)
+        print(grades)
+    
     else:
-        grades = []
-        subjects = Subject.objects.filter(teacher=request.user)
+        data = {}
+        subjects = Subject.objects.filter(teacher=request.user).order_by('title')
+        
         for subject in subjects:
-            grades.append(Grade.objects.filter(subject=subject))
-    return render(request,'notebook/grades.html',{'grades' : grades, 'subjects' : subjects})
+            grades = Grade.objects.filter(subject=subject)
+            student_grades = {}
+            for grade in grades:
+                student_name = grade.user.username
+                if student_name not in student_grades :
+                    student_grades[student_name] = []
+                student_grades[student_name].append(grade.grade)
+            data[subject.title] = student_grades
+        print(data)
+    return render(request,'notebook/grades.html',{'grades' : grades, 'subjects' : subjects, 'data' : data}) 
+
 
 def createMaterial(request):
     if request.user.role == 'Teacher':
