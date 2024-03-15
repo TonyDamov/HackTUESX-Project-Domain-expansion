@@ -1,29 +1,30 @@
 {% extends "notebook/base.html" %}
 {% block content %}
 <body>
+  <div style="padding-top: 6rem;">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-6">
         <form method="POST" action="">
           {% csrf_token %}
           <div class="mb-3">
-            <label for="username" class="form.label">Username</label>
-            <input id="username" name="username" required>
-          </div>
-          <div>
-            <label for="email" class="form.label">Email</label>
-            <input id="email" name="email" required>
+            <label for="username" class="form-label">Username</label>
+            <input id="username" name="username" class="form-control" required>
           </div>
           <div class="mb-3">
-            <label for="password" class="form.label">Password</label>
-            <input id="password" name="password" type="password" required>
+            <label for="email" class="form-label">Email</label>
+            <input id="email" name="email" class="form-control" required>
           </div>
-          <div>
-            <label for="confirm_password" class="form.label">Confirm Password</label>
-            <input id="confirm_password" name="confirm_password" type="password" required>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input id="password" name="password" type="password" class="form-control" required>
           </div>
-          <div>
-            <button type="submit" class="btn btn-primary" value="submit">Submit</button>
+          <div class="mb-3">
+            <label for="confirm_password" class="form-label">Confirm Password</label>
+            <input id="confirm_password" name="confirm_password" type="password" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <button type="submit" class="btn btn-primary btn-block btn-lg" value="submit">Submit</button>
           </div>
         </form>
       </div>
@@ -34,5 +35,6 @@
       </div>
     </div>
   </div>
+</div>
 </body>
 {% endblock content %}
