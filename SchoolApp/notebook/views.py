@@ -17,13 +17,24 @@ def Materials(request):
     return render(request,'notebook/materials.html',{'materials':materials})
 
 def Grades(request):
-    
     if request.user.role == 'Student':
-        grades = Grade.objects.filter(user=request.user)
-        subjects = []
-    else :
+        grades = Grade.objects.filter(user=request.user).values('subject__title', 'grade')
+        subjects = Subject.objects.filter(student=request.user)
+    else:
         grades = []
         subjects = Subject.objects.filter(teacher=request.user)
         for subject in subjects:
-            grades.append(Grade.objects.filter(subject=subject))
-    return render(request,'notebook/grades.html',{'grades' : grades, 'subjects' : subjects})
+            subject_grades = Grade.objects.filter(subject=subject).values('user__username', 'grade')
+            grades.extend(subject_grades)
+    return render(request, 'notebook/grades.html', {'grades': grades, 'subjects': subjects})
+#def Grades(request):
+    
+   # if request.user.role == 'Student':
+        #grades = Grade.objects.filter(user=request.user)
+       # subjects = []
+   # else :
+      #  grades = []
+      #  subjects = Subject.objects.filter(teacher=request.user)
+       # for subject in subjects:
+        #    grades.append(Grade.objects.filter(subject=subject))
+   # return render(request,'notebook/grades.html',{'grades' : grades, 'subjects' : subjects})

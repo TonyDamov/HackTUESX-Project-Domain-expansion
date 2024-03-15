@@ -1,6 +1,17 @@
 {% extends "notebook/base.html" %}
 {% block content %}
-    <body>
-    </body>
+{% if grades %}
+<h2>Grades</h2>
+<ul>
+    {% for subject in subjects %}
+    <li>{{subject.title}}</li>
+    {% for grade in grades %}
+        <li>{{grade.grade}}:{{ grade.user__username }}: {{ grade.grade }}</li>
+    {% endfor %}
+    {% endfor %}
+</ul>
+{% else %}
+<p>No grades available.</p>
+{% endif %}
 {% endblock content %}
     
