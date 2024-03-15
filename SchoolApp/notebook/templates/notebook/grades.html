@@ -1,17 +1,14 @@
 {% extends "notebook/base.html" %}
 {% block content %}
-{% if grades %}
-<h2>Grades</h2>
+{% for subject in subjects %}
+<h3>{{ subject.title }}</h3>
 <ul>
-    {% for subject in subjects %}
-    <li>{{subject.title}}</li>
     {% for grade in grades %}
-        <li>{{grade.grade}}:{{ grade.user__username }}: {{ grade.grade }}</li>
-    {% endfor %}
+        {% if grade.subject == subject %}
+            <li>{{ grade.grade }}</li>
+        {% endif %}
     {% endfor %}
 </ul>
-{% else %}
-<p>No grades available.</p>
-{% endif %}
+{% endfor %}
 {% endblock content %}
     
