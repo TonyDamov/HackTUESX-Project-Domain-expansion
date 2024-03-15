@@ -31,7 +31,7 @@ urlpatterns = [
     path('',user_views.loginPage,name = 'login-page'),
     path('register/',user_views.registerPage,name = 'register-page'),
     path('logout/',user_views.logoutUser,name = "logout-page"),
-    #path('profile/',user_views.,name = 'profile-page')
+    path('profile/',user_views.editUser,name = 'profile-page')
    # path('create-material/',user_views.CreateMaterial,name = 'create-material')
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
