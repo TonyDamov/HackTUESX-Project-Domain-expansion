@@ -21,11 +21,13 @@
                 </div>
                 <div class="card-body">
                     <p class="card-text">{{material.description}}</p>
-                    <button type="button" class="btn btn-primary download-btn" data-toggle="modal" data-target="#myModal{{material.id}}">
+                    <button type="button" class="btn btn-primary download-btn" data-toggle="modal" data-target="#myModal{{material.id}}" style="width: 20%;">
                         Open
                     </button>
-                    <a href="{% url 'update-material' material.id %}" class="btn btn-info bg-primary">Edit</a>
-                    <a href="{% url 'delete-material' material.id %}">Delete</a>
+                    <a href="{% url 'update-material' material.id %}" class="btn btn-info bg-primary" style="width: 20%;">Edit</a>
+                    <div class="float-right">
+                        <a href="#" class="btn btn-info bg-danger" data-toggle="modal" data-target="#myModal2{{material.id}}" style="width: 100%;">Delete</a>
+                    </div>
                 </div>
 
                 <div class="modal" id="myModal{{material.id}}">
@@ -39,8 +41,27 @@
                                 <p>{{material.description}}</p>
                             </div>
                             <div class="modal-footer">
-                                <a class="btn btn-primary float-left" href="{{ material.image_url }}" download>
+                                <a class="btn btn-primary btn-block" href="{{ material.image_url }}" download>
                                     Download {{ material.file }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal" id="myModal2{{material.id}}">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Are you sure you want to delete {{material.title}}?</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>Once deleted you can no longer recover it!</p>
+                            </div>
+                            <div class="modal-footer">
+                                <a class="btn btn-secondary btn-block" href="#" data-dismiss="modal">Cancel</a>
+                                <a class="btn btn-danger btn-block" href="{% url 'delete-material' material.id %}">
+                                    Delete
                                 </a>
                             </div>
                         </div>

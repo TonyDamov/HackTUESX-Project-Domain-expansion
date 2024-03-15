@@ -1,18 +1,27 @@
 {% extends "notebook/base.html" %}
-
 {% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card custom-card">
+                <div class="card-header">
+                    <h5 class="card-title">Delete Material</h5>
+                </div>
+                <div class="card-body">
+                    <form class="form" method="POST" action="">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <p>Are you sure you want to delete "{{material.title}}"?</p>
+                        </div>
 
-    <div class="layout__body">
-        <a href="{{request.META.HTTP_REFERER}}">Go back</a>
-        <form class="form" method="POST" action="">
-            {% csrf_token %}
-            <div class="form__group">
-                <p>Are you sure you want to delete "{{material.title}}"?</p>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-danger mr-2">Confirm</button>
+                            <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
             </div>
-
-            <div class="for__group">
-                <input  type="submit" value="Confirm" />
-            </div>
-
-        </form>
+        </div>
+    </div>
+</div>
 {% endblock content %}
