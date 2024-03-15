@@ -1,0 +1,37 @@
+{% extends "notebook/base.html" %}
+{% block content %}
+<div class="container">
+    <h1 class="text-center">Add Material</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for field in form %}
+                
+                <label>{{field.label}}</label>
+                <div>{{field}}</div>
+
+                {% endfor %}
+
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Custom CSS -->
+<style>
+    /* Style input fields */
+    input[type="text"],
+    textarea,
+    input[type="file"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-top: 6px;
+        margin-bottom: 16px;
+    }
+</style>
+{% endblock content %}

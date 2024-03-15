@@ -32,7 +32,8 @@ urlpatterns = [
     path('register/',user_views.registerPage,name = 'register-page'),
     path('logout/',user_views.logoutUser,name = "logout-page"),
     path('profile/',user_views.editUser,name = 'profile-page'),
-    path('create-material/',note_views.createMaterial,name = 'create-material')
+    path('create-material/',note_views.createMaterial,name = 'create-material'),
+    path('update-material/<str:pk>/',note_views.updateMaterial,name='update-material'),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

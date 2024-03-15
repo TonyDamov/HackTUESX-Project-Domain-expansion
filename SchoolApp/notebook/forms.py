@@ -5,4 +5,5 @@ class MaterialForm(ModelForm):
     class Meta:
         model=Material
         fields='__all__'
+        exclude=['user','group']
     

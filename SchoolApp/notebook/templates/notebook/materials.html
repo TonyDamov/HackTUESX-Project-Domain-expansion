@@ -3,7 +3,18 @@
 <body>
   <div style="padding-left: 18rem;">
     <div style="padding-top: 2rem;">
+        <div>
+            {% if request.user.role == 'Teacher' %}
+            <a href="{% url 'create-material' %}">Create Material</a>
+            {% endif %}
+        </div>
     {% for material in materials %}
+    {% if request.user == material.user %}
+
+    <a href="{% url 'update-material' material.id %}">Edit</a>
+
+    {% endif %}
+    
     <div style="padding-top: 1rem;">
     <div class="card custom-card" style="width: 18rem;">
           <div class="card-body">
