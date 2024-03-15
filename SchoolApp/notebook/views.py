@@ -15,7 +15,7 @@ def homeProfile(request):
 
 @login_required(login_url='login-page')
 def Materials(request):
-    materials = Material.objects.all()
+    materials = Material.objects.filter(groups__in=request.user.groups.all())
     return render(request,'notebook/materials.html',{'materials':materials})
 
 def Grades(request):
