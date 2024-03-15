@@ -34,4 +34,19 @@
 <br>
 <br>
 <br>
+<br>
+
+<!-- Alert Messages -->
+{% if messages %} 
+    {% for message in messages %}
+    <div class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true" style="position: fixed; top: 5rem; right: 10px;">
+        <div class="d-flex">
+            <div class="toast-body">
+                <li style="font-size: larger;">{{ message }}</li>
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+    {% endfor %}
+{% endif %}
 {% endblock %}
