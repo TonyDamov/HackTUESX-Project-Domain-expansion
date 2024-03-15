@@ -8,7 +8,7 @@ class User(AbstractUser):
         ("Teacher", "Teacher")
     )
 
-    last_name=models.CharField(max_length=100, null=True)
+    last_name=models.CharField(max_length=100, null=True, blank=True)
     email=models.EmailField(unique=True)
     avatar=models.ImageField(default='default.jpg')
     role=models.CharField(choices=ROLES, max_length=7, default="Student")

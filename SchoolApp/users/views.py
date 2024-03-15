@@ -18,6 +18,7 @@ def userProfile(request, pk):
 def registerPage(request):
     if request.method == "POST":
         username = request.POST["username"]
+        last_name = request.POST["last_name"]
         email = request.POST["email"]
         password = request.POST["password"]
         confirm_password = request.POST["confirm_password"]
