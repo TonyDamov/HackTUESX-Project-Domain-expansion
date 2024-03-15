@@ -1,7 +1,7 @@
 {% extends "notebook/base.html" %}
 {% block content %}
 
-    <h2>Grades</h2>
+    <h1 class="text-center">Grades</h1>
 
     {% if request.user.role == 'Student' %}
         {% for grade in grades %}
