@@ -1,0 +1,13 @@
+{% extends "notebook/base.html" %}
+{% block content %}
+<div>
+    <h1>Add Material</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+
+</div>
+{% endblock content %}
+    
