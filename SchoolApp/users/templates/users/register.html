@@ -1,7 +1,6 @@
 {% extends "notebook/base.html" %}
 {% block content %}
 <body>
-  {% include "notebook/navbar.html" %}
   <form method="POST" action="">
     {% csrf_token %}
     {% for field in form %}

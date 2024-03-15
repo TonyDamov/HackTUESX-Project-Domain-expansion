@@ -26,12 +26,12 @@ from django.views.generic import ListView, DetailView, DeleteView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('materials/',note_views.Materials,name = 'material-page'),
-    #path('materials/<int:pk>/',note_views.MaterialsDetailView.as_view(), name='material-detail'),
     path('grades/',note_views.Grades,name = 'your-grades'),
-    path('home/',note_views.home,name = 'home-page'),
-    path('',user_views.loginPage,name = 'login-page'),
+    path('',note_views.home,name = 'home-page'),
+    path('login/',user_views.loginPage,name = 'login-page'),
     path('register/',user_views.registerPage,name = 'register-page'),
     path('logout/',user_views.logoutUser,name = "logout-page"),
+    path('userprofile/',user_views.userProfile,name = 'profile-page')
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
