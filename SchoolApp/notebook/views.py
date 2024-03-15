@@ -81,6 +81,21 @@ def updateMaterial(request, pk):
     else:
         return redirect('home-page')
 
+@login_required(login_url='login-page')
+def deleteMaterial(request, pk):
+    if request.user.role == 'Teacher':
+        material = Material.objects.get(id=pk)
+        if request.user != material.user:
+            return HttpResponse('You are not allowed here!')
+
+        if request.method == 'POST':
+            material.delete()
+            return redirect('material-page')
+
+        return render(request, 'notebook/materials_delete.html',{'material':material})
+    else:
+        return redirect('home-page')
+
 
 #def deleteMaterial(request, pk):
 

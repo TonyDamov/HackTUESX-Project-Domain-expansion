@@ -12,9 +12,10 @@
     {% if request.user == material.user %}
 
     <a href="{% url 'update-material' material.id %}">Edit</a>
+    <a href="{% url 'delete-material' material.id %}">Delete</a>
 
     {% endif %}
-    
+
     <div style="padding-top: 1rem;">
     <div class="card custom-card" style="width: 18rem;">
           <div class="card-body">
