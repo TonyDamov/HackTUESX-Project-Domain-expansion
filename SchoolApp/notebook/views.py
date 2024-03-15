@@ -28,3 +28,4 @@ def Grades(request):
         for subject in subjects:
             grades.append(Grade.objects.filter(subject=subject))
     return render(request,'notebook/grades.html',{'grades' : grades, 'subjects' : subjects})
+
