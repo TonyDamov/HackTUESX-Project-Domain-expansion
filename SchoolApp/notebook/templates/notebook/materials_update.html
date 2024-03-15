@@ -1,11 +1,11 @@
 {% extends "notebook/base.html" %}
 {% block content %}
 <div class="container">
-    <h1 class="text-center">Add Material</h1>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center" style="padding-top: 2rem;">
         <div class="col-md-6">
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
+                <h1 class="text-center">Update material</h1>
                 {% for field in form %}
                 
                 <label>{{field.label}}</label>
