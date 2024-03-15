@@ -1,18 +1,38 @@
 {% extends "notebook/base.html" %}
 {% block content %}
 <body>
-  <form method="POST" action="">
-    {% csrf_token %}
-    {% for field in form %}
-    <div class="mb-3">
-      <label class="form-label">{{field.label}}</label>
-      {{field}}
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form method="POST" action="">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="username" class="form.label">Username</label>
+            <input id="username" name="username" required>
+          </div>
+          <div>
+            <label for="email" class="form.label">Email</label>
+            <input id="email" name="email" required>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form.label">Password</label>
+            <input id="password" name="password" type="password" required>
+          </div>
+          <div>
+            <label for="confirm_password" class="form.label">Confirm Password</label>
+            <input id="confirm_password" name="confirm_password" type="password" required>
+          </div>
+          <div>
+            <button type="submit" class="btn btn-primary" value="submit">Submit</button>
+          </div>
+        </form>
+      </div>
     </div>
-    {% endfor %}
-    <button type="submit" class="btn btn-primary" value="submit">Submit</button>
-    Existing user?<a href="{% url "login-page" %}">Log in</a>.
-  </form>
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center">
+        <p>Existing user? <a href="{% url 'login-page' %}">Log in</a>.</p>
+      </div>
+    </div>
+  </div>
 </body>
 {% endblock content %}
-    
-

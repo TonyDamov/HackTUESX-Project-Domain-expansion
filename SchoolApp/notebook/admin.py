@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Grade, Material
+from .models import Grade, Material, Subject
 # Register your models here.
 
 #@admin.register(Grade)
@@ -7,3 +7,4 @@ from .models import Grade, Material
     #list_display = ('grade', 'user')
 admin.site.register(Grade)
 admin.site.register(Material)
+admin.site.register(Subject)
