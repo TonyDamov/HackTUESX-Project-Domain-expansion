@@ -4,6 +4,7 @@ from .models import Grade,Material, Subject
 from django.contrib.auth.decorators import login_required
 from users.forms import User
 from .forms import MaterialForm
+
 # Create your views here.
 
 @login_required(login_url='login-page')
@@ -55,8 +56,10 @@ def createMaterial(request):
                 user=request.user,
                 title=request.POST.get('title'),
                 description=request.POST.get('description'),
-                file=request.FILES['file']
+                file=request.FILES['file'],
+                
             )
+            return redirect('material-page')
 
     else:
         return redirect('home-page')
