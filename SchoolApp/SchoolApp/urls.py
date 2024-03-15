@@ -27,7 +27,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('materials/',note_views.Materials,name = 'material-page'),
     path('grades/',note_views.Grades,name = 'your-grades'),
-    path('home_profile/<str:pk>',note_views.homeProfile,name = 'home-page'),
+    path('home/',note_views.homeProfile,name = 'home-page'),
     path('',user_views.loginPage,name = 'login-page'),
     path('register/',user_views.registerPage,name = 'register-page'),
     path('logout/',user_views.logoutUser,name = "logout-page"),
