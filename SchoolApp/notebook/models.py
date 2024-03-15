@@ -22,6 +22,8 @@ class Material(models.Model) :
 class Subject(models.Model):
     teacher = models.ForeignKey(User, models.CASCADE)
     title = models.CharField(max_length=128, null=False, blank=False)
+    def __str__(self) -> str :
+        return f'{self.title} - {self.teacher}'
     
 class Grade(models.Model) :
     grade = models.DecimalField(null=False, blank=False, decimal_places = 2, max_digits = 3)
