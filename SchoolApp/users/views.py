@@ -7,7 +7,7 @@ from .models import User
 # Create your views here.
 def userProfile(request, pk):
     user=User.objects.get(id=pk)
-    return render(request,)
+    return render(request,'notebook/homepage.html',{'user': user })
 
 def registerPage(request):
     form=MyUserCreationForm()
@@ -46,3 +46,5 @@ def loginPage(request):
 def logoutUser(request):
     logout(request)
     return redirect('login-page')
+
+
