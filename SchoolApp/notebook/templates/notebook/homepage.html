@@ -20,12 +20,12 @@
                 <div class="col-md-2">
                     <div class="profile-picture">
                         <a href="#">
-                        <img class="img-fluid" alt="avatar" src="{{user.avatar.url}}">
+                        <img class="img-fluid" alt="avatar" src="{{request.user.avatar.url}}">
                         </a>
                     </div>
                 </div>
                 <div class="col-md-8">
-                    <h3 class="mb-0 ml-md-3">Hello, {{user.username}}.</h3>
+                    <h3 class="mb-0 ml-md-3">Hello, {{request.user.username}}.</h3>
                 </div>
             </div>
         </div>

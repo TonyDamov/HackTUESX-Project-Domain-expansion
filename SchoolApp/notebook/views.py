@@ -6,11 +6,9 @@ from users.forms import User
 # Create your views here.
 
 @login_required(login_url='login-page')
-def homeProfile(request,pk):
+def homeProfile(request):
     if not request.user.is_authenticated:
         return redirect('login-page')
-    else:
-     user = User.objects.get(pk = id)
     return render(request,'notebook/homepage.html')
 
 @login_required(login_url='login-page')
