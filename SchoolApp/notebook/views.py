@@ -49,10 +49,13 @@ def createMaterial(request):
     if request.user.role == 'Teacher':
         form=MaterialForm()
         if request.method == 'POST':
-            form=MaterialForm(request.POST, request.FILES)
-            if form.is_valid():
-                form.save()
-                return redirect('home-page')
+            Material.objects.create(
+                user=request.user,
+                title=request.POST.get('title'),
+                description=request.POST.get('description'),
+                file=request.FILES['file']
+            )
+
     else:
         return redirect('home-page')
     return render(request,'notebook/materials_create.html',{'form':form})
