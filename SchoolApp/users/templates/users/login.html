@@ -2,21 +2,32 @@
 {% block content %}
 <body>
   {% block navbar %}{% endblock %}
-  <div class="center">
-      <form method="POST" action="">
-        {% csrf_token %}
-        <div class="mb-3">
-          <label for="username_or_email" class="form.label">Enter name or email</label>
-          <input id="username_or_email" name="username_or_email" required>
-        </div>
-        <div class="mb-3">
-          <labe for="password" class="form.label">Password</labe>
-          <input id="password" name="password" type="password" required>
-          <button type="submit" class="btn btn-primary" value="submit">Submit</button>
-        </div>
-      </form>
+  <div style="padding-top: 6rem;">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form method="POST" action="">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="username_or_email" class="form-label">Enter name or email</label>
+            <input id="username_or_email" name="username_or_email" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input id="password" name="password" type="password" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+          </div>
+        </form>
+      </div>
     </div>
-
-    New user?<a href="{% url "register-page" %}">Register instead</a>.
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center">
+        <p>New user? <a href="{% url "register-page" %}">Register instead</a>.</p>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 {% endblock content %}
