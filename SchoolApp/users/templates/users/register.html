@@ -3,16 +3,26 @@
 <body>
   <form method="POST" action="">
     {% csrf_token %}
-    {% for field in form %}
     <div class="mb-3">
-      <label class="form-label">{{field.label}}</label>
-      {{field}}
+      <label for="username" class="form.label">Username</label>
+      <input id="username" name="username" required>
     </div>
-    {% endfor %}
-    <button type="submit" class="btn btn-primary" value="submit">Submit</button>
-    Existing user?<a href="{% url "login-page" %}">Log in</a>.
+    <div>
+      <label for="email" class="form.label">Email</label>
+      <input id="email" name="email" required>
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form.label">Password</label>
+      <input id="password" name="password" type="password" required>
+    </div>
+    <div>
+      <label for="confirm_password" class="form.label">Confirm Password</label>
+      <input id="confirm_password" name="confirm_password" type="password" required>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary" value="submit">Submit</button>
+    </div>
   </form>
-</body>
 {% endblock content %}
     
 
