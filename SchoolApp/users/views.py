@@ -120,4 +120,3 @@ def editUser(request):
     
     return render(request, 'users/edituser.html')
 
-
