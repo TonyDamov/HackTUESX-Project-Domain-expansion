@@ -97,6 +97,4 @@ def deleteMaterial(request, pk):
         return redirect('home-page')
 
 
-#def deleteMaterial(request, pk):
-
 
