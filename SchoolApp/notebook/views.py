@@ -20,6 +20,7 @@ def Grades(request):
     
     if request.user.role == 'Student':
         grades = Grade.objects.filter(user=request.user)
+        subjects = []
     else :
         grades = []
         subjects = Subject.objects.filter(teacher=request.user)
