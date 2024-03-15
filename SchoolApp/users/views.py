@@ -114,4 +114,7 @@ def logoutUser(request):
     logout(request)
     return redirect('login-page')
 
+def profilePage(request):
+    return render(request, "users/edituser.html")
+
 
