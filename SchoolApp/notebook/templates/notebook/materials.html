@@ -25,6 +25,7 @@
                         Open
                     </button>
                     <a href="{% url 'update-material' material.id %}" class="btn btn-info bg-primary">Edit</a>
+                    <a href="{% url 'delete-material' material.id %}">Delete</a>
                 </div>
 
                 <div class="modal" id="myModal{{material.id}}">

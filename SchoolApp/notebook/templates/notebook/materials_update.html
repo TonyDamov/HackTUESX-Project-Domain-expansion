@@ -7,9 +7,9 @@
                 {% csrf_token %}
                 <h1 class="text-center">Update material</h1>
                 {% for field in form %}
-                
-                <label>{{field.label}}</label>
-                <div>{{field}}</div>
+                    
+                    <label>{{field.label}}</label>
+                    <div>{{field}}</div>
 
                 {% endfor %}
 

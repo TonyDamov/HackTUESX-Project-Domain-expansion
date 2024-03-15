@@ -1,0 +1,18 @@
+{% extends "notebook/base.html" %}
+
+{% block content %}
+
+    <div class="layout__body">
+        <a href="{{request.META.HTTP_REFERER}}">Go back</a>
+        <form class="form" method="POST" action="">
+            {% csrf_token %}
+            <div class="form__group">
+                <p>Are you sure you want to delete "{{material.title}}"?</p>
+            </div>
+
+            <div class="for__group">
+                <input  type="submit" value="Confirm" />
+            </div>
+
+        </form>
+{% endblock content %}

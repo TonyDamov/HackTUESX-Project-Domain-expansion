@@ -4,6 +4,6 @@ from .models import Material
 class MaterialForm(ModelForm):
     class Meta:
         model=Material
-        fields='__all__'
-        exclude=['user','group']
+        fields = ['title','description','file','groups']
+        
     
