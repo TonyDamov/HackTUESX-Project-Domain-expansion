@@ -6,12 +6,11 @@ from users.forms import User
 # Create your views here.
 
 @login_required(login_url='login-page')
-def homeProfile(request,pk):
+def homeProfile(request):
     if not request.user.is_authenticated:
         return redirect('login-page')
     else:
-     user = User.objects.get(pk = id)
-    return render(request,'notebook/homepage.html')
+     return render(request,'notebook/homepage.html')
 
 @login_required(login_url='login-page')
 def Materials(request):
@@ -19,7 +18,7 @@ def Materials(request):
     return render(request,'notebook/materials.html',{'materials':materials})
 
 def Grades(request):
-    
+
     if request.user.role == 'Student':
         grades = Grade.objects.filter(user=request.user)
         subjects = []
