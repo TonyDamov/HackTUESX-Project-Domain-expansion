@@ -28,7 +28,6 @@ def Grades(request):
         subjects = Subject.objects.filter(teacher=request.user)
         for subject in subjects:
             grades.append(Grade.objects.filter(subject=subject))
-<<<<<<< HEAD
     return render(request,'notebook/grades.html',{'grades' : grades, 'subjects' : subjects})
 
 def createMaterial(request):
@@ -42,6 +41,4 @@ def createMaterial(request):
     else:
         return redirect('home-page')
     return render(request,'notebook/materials_create.html',{'form':form})
-=======
-    return render(request,'notebook/grades.html',{'grades' : grades, 'subjects' : subjects})
->>>>>>> 8f7209519379c68051b63ea309c0a25d19982a4c
+
