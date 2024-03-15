@@ -1,6 +1,7 @@
 from django.db import models
 from users.models import User
 from django.utils import timezone
+from django.contrib.auth.models import Group
 # Create your models here.
 
 class Material(models.Model) :
@@ -8,7 +9,7 @@ class Material(models.Model) :
     title = models.CharField(max_length=128)
     description = models.TextField()
     user = models.ForeignKey(User, models.CASCADE)
-    group = models.ManyToManyField(User, related_name='materials')
+    groups = models.ManyToManyField(Group, related_name='materials')
     def __str__(self) -> str :
         return f'{self.user} - {self.title}'
     
