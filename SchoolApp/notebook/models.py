@@ -3,18 +3,10 @@ from users.models import User
 from django.utils import timezone
 # Create your models here.
 
-
-class Grade(models.Model) :
-    grade = models.DecimalField(null=False, blank=False, decimal_places = 2, max_digits = 3)
-    user = models.ForeignKey(User, models.CASCADE)
-    def __str__(self) -> str :
-        return f'{self.grade} - {self.user}'
-
 class Material(models.Model) :
     file = models.FileField()
     title = models.CharField(max_length=128)
     description = models.TextField()
-    #date_posted = models.DateTimeField(default = timezone.now)
     user = models.ForeignKey(User, models.CASCADE)
     group = models.ManyToManyField(User, related_name='materials')
     def __str__(self) -> str :
@@ -27,3 +19,14 @@ class Material(models.Model) :
         else:
             return ""
     
+class Subject(models.Model):
+    teacher = models.ForeignKey(User, models.CASCADE)
+    title = models.CharField(max_length=128, null=False, blank=False)
+    
+class Grade(models.Model) :
+    grade = models.DecimalField(null=False, blank=False, decimal_places = 2, max_digits = 3)
+    user = models.ForeignKey(User, models.CASCADE, related_name='student')
+    subject = models.ForeignKey(Subject, models.CASCADE)
+    teacher = models.ForeignKey(User, models.CASCADE, related_name='teacher')
+    def __str__(self) -> str :
+        return f'{self.grade} - {self.user}'

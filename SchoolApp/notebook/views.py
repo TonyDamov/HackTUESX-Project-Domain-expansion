@@ -1,7 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from .models import Grade,Material
-from django.views.generic import ListView, DetailView
+from .models import Grade,Material, Subject
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -18,7 +17,12 @@ def Materials(request):
     return render(request,'notebook/materials.html',{'materials':materials})
 
 def Grades(request):
-    grades = Grade.objects.all()
     
-
-    return render(request,'notebook/grades.html',{'grades' : grades})
+    if request.user.role == 'Student':
+        grades = Grade.objects.filter(user=request.user)
+    else :
+        grades = []
+        subjects = Subject.objects.filter(teacher=request.user)
+        for subject in subjects:
+            grades.append(Grade.objects.filter(subject=subject))
+    return render(request,'notebook/grades.html',{'grades' : grades, 'subjects' : subjects})
