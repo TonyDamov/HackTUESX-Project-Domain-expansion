@@ -2,9 +2,12 @@ from django.shortcuts import render,redirect
 from .forms import MyUserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from django.contrib.auth.models import User
+from .models import User
 
 # Create your views here.
+def userProfile(request, pk):
+    user=User.objects.get(id=pk)
+    return render(request,)
 
 def registerPage(request):
     form=MyUserCreationForm()
