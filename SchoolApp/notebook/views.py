@@ -66,17 +66,22 @@ def createMaterial(request):
 def updateMaterial(request, pk):
     if request.user.role == 'Teacher':
         material = Material.objects.get(id=pk)
-        form = MaterialForm(instance=material)
         if request.user != material.user:
             return HttpResponse('You are not allowed here!')
+
         if request.method == 'POST':
-            material.title = request.POST.get('title')
-            material.description = request.POST.get('description')
-            if 'file' in request.FILES:
-                material.file = request.FILES['file']
-            material.save()
-            return redirect('material-page')
+            form = MaterialForm(request.POST, request.FILES, instance=material)
+            if form.is_valid():
+                form.save()
+                return redirect('material-page')
+        else:
+            form = MaterialForm(instance=material)
+
+        return render(request, 'notebook/materials_update.html', {'form': form})
     else:
         return redirect('home-page')
-    return render(request, 'notebook/materials_update.html', {'form': form})
+
+
+#def deleteMaterial(request, pk):
+
 
