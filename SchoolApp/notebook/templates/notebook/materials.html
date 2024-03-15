@@ -1,10 +1,11 @@
 {% extends "notebook/base.html" %}
 {% block content %}
 <body>
+  <div style="padding-left: 18rem;">
+    <div style="padding-top: 2rem;">
     {% for material in materials %}
-    <div style="padding-left: 16rem;">
-      <div style="padding-top: 2rem;">
-        <div class="card custom-card" style="width: 18rem;">
+    <div style="padding-top: 1rem;">
+    <div class="card custom-card" style="width: 18rem;">
           <div class="card-body">
             <h5 class="card-title">{{material.user}}: {{material.title}}</h5>
             <p class="card-text">{{material.description}}</p>
@@ -34,10 +35,13 @@
                     </div>
                 </div>
             </div>
-        </div>
-      </div> 
-    </div>  
+          </div> 
+        </div> 
     {% endfor %}
+    </div>
+</div> 
+<br>
+<br>
     <style>
       .custom-card {
           width: 80% !important;

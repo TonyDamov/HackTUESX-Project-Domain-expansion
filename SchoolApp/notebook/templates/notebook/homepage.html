@@ -1,6 +1,23 @@
 {% extends "notebook/base.html" %}
 {% block content %}
 <body>
+<<<<<<< HEAD
     <img src="{{user.avatar.url}}" class = "rounded-circle"> Hello, {{user.username}}.      
+=======
+    <div style="padding-top: 2rem;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <a href="#">
+                    <img class="rounded-circle shadow-4-strong img-fluid" alt="avatar2" src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg" class = "rounded-circle" />
+                    </a>
+                </div>
+                <div class="col-md-8 d-flex align-items-center">
+                    <h3 class="mb-0 ml-md-3">Hello, {{user.username}}.</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+>>>>>>> 5c5a72efefa5c808b0e04255befae61d8157cead
 </body>
 {% endblock content %}

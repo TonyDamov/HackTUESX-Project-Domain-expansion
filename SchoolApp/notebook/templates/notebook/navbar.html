@@ -1,5 +1,5 @@
 {% block content %}
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary fixed-top">
   <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
       <span class="navbar-brand mb-0 h1">Domain expansion</span>
@@ -13,13 +13,13 @@
       {% if request.user.is_authenticated %}
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/home/">Home</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'home-page' %}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="http://127.0.0.1:8000/grades/">Grades</a>
+          <a class="nav-link" href="{% url 'grades-page'}">Grades</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="http://127.0.0.1:8000/materials/">Materials</a>
+          <a class="nav-link" href="{% url 'material-page' %}">Materials</a>
         </li>
       </ul>
       <ul class="navbar-nav ml-auto"> <!-- Added ml-auto to align items to the right -->
@@ -31,4 +31,7 @@
     {% endif %}
   </div>
 </nav>
+<br>
+<br>
+<br>
 {% endblock %}
