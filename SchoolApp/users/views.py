@@ -3,7 +3,7 @@ from .forms import MyUserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import User
+from .forms import User,editForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.db import IntegrityError
 from django.urls import reverse
@@ -114,7 +114,9 @@ def logoutUser(request):
     logout(request)
     return redirect('login-page')
 
-def profilePage(request):
-    return render(request, "users/edituser.html")
 
+@login_required(login_url='login')
+def editUser(request):
+    
+    return render(request, 'users/edituser.html')
 
