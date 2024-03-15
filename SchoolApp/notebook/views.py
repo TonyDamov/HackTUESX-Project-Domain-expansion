@@ -2,13 +2,15 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import Grade,Material, Subject
 from django.contrib.auth.decorators import login_required
-
+from users.forms import User
 # Create your views here.
 
 @login_required(login_url='login-page')
-def home(request):
+def homeProfile(request,pk):
     if not request.user.is_authenticated:
         return redirect('login-page')
+    else:
+     user = User.objects.get(pk = id)
     return render(request,'notebook/homepage.html')
 
 @login_required(login_url='login-page')
