@@ -1,6 +1,35 @@
 {% extends "notebook/base.html" %}
 {% block content %}
+<style>
+    .profile-picture {
+        width: 175px; /* Adjust as needed */
+        height: 175px; /* Adjust as needed */
+        border-radius: 50%;
+        overflow: hidden;
+    }
+    .profile-picture img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+</style>
     <body>
+        <div style="padding-top: 2rem;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-2">
+                        <div class="profile-picture">
+                            <a href="#">
+                            <img class="img-fluid" alt="avatar" src="{{user.avatar.url}}">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <h3 class="mb-0 ml-md-3">Hello, {{user.username}}.</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 {% endblock content %}
     
