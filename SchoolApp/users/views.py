@@ -13,6 +13,7 @@ def registerPage(request):
     form=MyUserCreationForm()
     if request.method == 'POST':
         form=MyUserCreationForm(request.POST)
+        print(form.errors)
         if form.is_valid():
             user=form.save()
             user.save()
@@ -20,7 +21,7 @@ def registerPage(request):
             return redirect('home-page')
         else:
             messages.error(request, 'An error occurred during registration')
-    return render(request,'users/register.html',{'form':form})
+            return render(request,'users/register.html',{'form':form})
 
 def loginPage(request):
     if request.user.is_authenticated:

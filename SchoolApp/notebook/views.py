@@ -7,7 +7,7 @@ from django.views.generic import ListView, DetailView
 
 
 def home(request):
-    if request.user.is_authenticated:
+    if not request.user.is_authenticated:
         return redirect('login-page')
     return render(request,'notebook/homepage.html')
 
@@ -17,17 +17,7 @@ def Materials(request):
         return redirect('login-page')
     materials = Material.objects.all()
     return render(request,'notebook/materials.html',{'materials':materials})
-"""
-class MaterialsListView(ListView):
-    model = Material
-    template_name = 'notebook/materials.html'
-    context_object_name = 'materials'
-    ordering = ['-date_posted']
 
-class MaterialsDetailView(DetailView):
-    model = Material
-    context_object_name = 'materials'
-"""
 def Grades(request):
     if request.user.is_authenticated:
         return redirect('login-page')
