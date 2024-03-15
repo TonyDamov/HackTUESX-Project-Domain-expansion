@@ -28,11 +28,11 @@ urlpatterns = [
     path('materials/',note_views.Materials,name = 'material-page'),
     path('grades/',note_views.Grades,name = 'your-grades'),
     path('home_profile/<str:pk>',note_views.homeProfile,name = 'home-page'),
-    path('login/',user_views.loginPage,name = 'login-page'),
+    path('',user_views.loginPage,name = 'login-page'),
     path('register/',user_views.registerPage,name = 'register-page'),
     path('logout/',user_views.logoutUser,name = "logout-page"),
     path('userprofile/<str:pk>',user_views.userProfile,name = 'profile-page'),
-    path('create-material/',user_views.CreateMaterial,name = 'create-material')
+   # path('create-material/',user_views.CreateMaterial,name = 'create-material')
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
