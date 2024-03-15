@@ -1,15 +1,20 @@
 from django.shortcuts import render,redirect
 from .forms import MyUserCreationForm
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import User
 
 # Create your views here.
+@login_required(login_url='login-page')
 def userProfile(request, pk):
     user=User.objects.get(id=pk)
-    return render(request,)
+    return render(request,'notebook/homepage.html',{'user': user })
+
 
 def registerPage(request):
+    if request.user.is_authenticated:
+        return redirect('home-page')
     form=MyUserCreationForm()
     if request.method == 'POST':
         form=MyUserCreationForm(request.POST)
@@ -47,3 +52,5 @@ def loginPage(request):
 def logoutUser(request):
     logout(request)
     return redirect('login-page')
+
+
