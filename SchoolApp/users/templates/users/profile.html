@@ -33,8 +33,6 @@
         </div>
     </div>
 </body>
-<h2>{{user.last_name}}</h2>
-
 {% if request.user == user %}
 <a href="{% url 'edit-profile' %}">Edit Profile</a>
 {% endif %}
