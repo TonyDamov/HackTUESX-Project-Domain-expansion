@@ -2,7 +2,7 @@
 {% block content %}
 
     <h2>Grades</h2>
-
+    <a href="{% url 'create-grade' %}">Add grade</a>
     {% if request.user.role == 'Student' %}
         {% for grade in grades %}
             <p>{{ grade.subject.title }} - {{ grade.grade }}</p>
@@ -11,7 +11,7 @@
         {% for subject, student_grades in data.items %}
             <p>{{ subject }}</p>
             {% for student, grades in student_grades.items %}
-                <p>{{ student }} - {{ grades|join:", " }}</p>
+                <p>{{ student }} - {{ grades|join:", " }}></p>
             {% endfor %}
         {% endfor %}
     {% endif %}
