@@ -1,18 +1,110 @@
 {% extends "notebook/base.html" %}
 {% block content %}
-
-    <h1 class="text-center">Grades</h1>
+<div class="container">
+    <h1 class="text-center mb-4">Grades</h1>
 
     {% if request.user.role == 'Student' %}
-        {% for grade in grades %}
-            <p>{{ grade.subject.title }} - {{ grade.grade }}</p>
-        {% endfor %}
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card custom-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Your Grades</h5>
+                        {% for grade in grades %}
+                            <div class="grade-block">
+                                <div class="name-block">{{ grade.subject.title }}</div>
+                                <div class="grade">{{ grade.grade }}</div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
     {% else %}
-        {% for subject, student_grades in data.items %}
-            <p>{{ subject }}</p>
-            {% for student, grades in student_grades.items %}
-                <p>{{ student }} - {{ grades|join:", " }}</p>
+        <div class="accordion" id="accordionGrades">
+            {% for subject, student_grades in data.items %}
+                <div class="card custom-card">
+                    <div class="card-header" id="heading{{ forloop.counter }}">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{ forloop.counter }}" aria-expanded="true" aria-controls="collapse{{ forloop.counter }}">
+                                {{ subject }}
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapse{{ forloop.counter }}" class="collapse" aria-labelledby="heading{{ forloop.counter }}" data-parent="#accordionGrades">
+                        <div class="card-body">
+                            {% for student, grades in student_grades.items %}
+                                <div class="student-block">
+                                    <div class="student-header">{{ student }}</div>
+                                    <div class="student-body">
+                                        <div class="grade-list">
+                                            {% for grade in grades %}
+                                                <div class="grade">{{ grade }}</div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
             {% endfor %}
-        {% endfor %}
+        </div>
     {% endif %}
+</div>
+
+<!-- Custom CSS -->
+<style>
+    .grade-block {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+
+    .name-block,
+    .grade {
+        padding: 5px 10px;
+        border-radius: 10px;
+        margin-bottom: 5px;
+    }
+
+    .name-block {
+        background-color: #f0f0f0;
+    }
+
+    .grade {
+        background-color: #333; /* Dark background color for grade boxes */
+        color: #fff; /* Text color */
+        margin-right: 5px;
+        padding: 5px 10px;
+        border-radius: 10px;
+    }
+
+    .student-block {
+        background-color: #ddd; /* Darker box for each student */
+        border-radius: 10px;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .student-header {
+        font-weight: bold;
+        margin-bottom: 5px;
+        background-color: #222; /* Darker box for each student's name */
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 10px;
+    }
+
+    .student-body {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .grade-list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+</style>
 {% endblock content %}
