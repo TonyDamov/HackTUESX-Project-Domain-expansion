@@ -13,10 +13,10 @@ class User(AbstractUser):
     avatar=models.ImageField(default='default.jpg')
     role=models.CharField(choices=ROLES, max_length=7, default="Student")
 
-    @property
-    def image_url(self):
-        if self.avatar and hasattr(self.avatar, 'url'):
-            return self.avatar.url
-        else:
-            return ""
+    #@property
+    #def image_url(self):
+        #if self.avatar and hasattr(self.avatar, 'url'):
+            #return self.avatar.url
+        #else:
+            #return ""
 # Create your models here.

@@ -31,12 +31,13 @@ urlpatterns = [
     path('',user_views.loginPage,name = 'login-page'),
     path('register/',user_views.registerPage,name = 'register-page'),
     path('logout/',user_views.logoutUser,name = "logout-page"),
-    path('profile/',user_views.editUser,name = 'profile-page'),
+    path('profile/<str:pk>',user_views.userProfile,name = 'profile-page'),
     path('create-material/',note_views.createMaterial,name = 'create-material'),
     path('update-material/<str:pk>/',note_views.updateMaterial,name='update-material'),
     path('delete-material/<str:pk>/',note_views.deleteMaterial,name='delete-material'),
     path('create-grade/',note_views.createGrade,name = 'create-grade'),
     path('update-grades/<str:pk>/', note_views.updateMaterial, name='update-grades'),
+    path('edit-profile/',user_views.editUser,name='edit-profile'),
     #path('delete-material/<str:pk>/',note_views.deleteMaterial,name='delete-material'),
     
 ]

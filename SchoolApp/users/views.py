@@ -3,7 +3,7 @@ from .forms import MyUserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import User,editForm
+from .forms import User,EditForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.db import IntegrityError
 from django.urls import reverse
@@ -12,7 +12,7 @@ from django.urls import reverse
 @login_required(login_url='login-page')
 def userProfile(request, pk):
     user=User.objects.get(id=pk)
-    return render(request,'notebook/homepage.html',{'user': user })
+    return render(request,'users/profile.html',{'user': user })
 
 
 def registerPage(request):
@@ -116,6 +116,13 @@ def logoutUser(request):
 
 @login_required(login_url='login')
 def editUser(request):
-    
-    return render(request, 'users/edituser.html')
+    user = request.user
+    form =EditForm(instance=user)
+    if request.method == 'POST':
+        form = EditForm(request.POST, request.FILES, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('profile-page', pk=user.id)
+
+    return render(request, 'users/edituser.html', {'form': form})
 
