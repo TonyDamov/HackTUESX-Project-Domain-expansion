@@ -1,20 +1,53 @@
 {% extends "notebook/base.html" %}
 {% block content %}
 <div class="container">
-    <h1 class="text-center">Add Material</h1>
-    <a href="{{request.META.HTTP_REFERER}}">Go back</a>
+    <h1 class="text-center mb-4">Add Material</h1>
+    <a href="{{ request.META.HTTP_REFERER }}" class="custom-link">Go back</a>
     <div class="row justify-content-center">
         <div class="col-md-6">
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {% for field in form %}
-                <label>{{field.label}}</label>
-                <div>{{field}}</div>
-
+                <div class="form-group">
+                    <label>{{ field.label }}</label>
+                    <div>{{ field }}</div>
+                </div>
                 {% endfor %}
-                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                <button type="submit" class="btn btn-primary btn-block mt-3">Submit</button>
             </form>
         </div>
     </div>
 </div>
+
+<style>
+    .custom-link {
+        color: #007bff;
+        text-decoration: none;
+        margin-bottom: 10px;
+        display: inline-block;
+    }
+
+    .custom-link:hover {
+        text-decoration: underline;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+</style>
+
 {% endblock content %}
