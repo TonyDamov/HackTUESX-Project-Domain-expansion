@@ -35,6 +35,10 @@ urlpatterns = [
     path('create-material/',note_views.createMaterial,name = 'create-material'),
     path('update-material/<str:pk>/',note_views.updateMaterial,name='update-material'),
     path('delete-material/<str:pk>/',note_views.deleteMaterial,name='delete-material'),
+    path('create-grade/',note_views.createGrade,name = 'create-grade'),
+    path('update-grades/<str:pk>/', note_views.updateMaterial, name='update-grades'),
+    #path('delete-material/<str:pk>/',note_views.deleteMaterial,name='delete-material'),
+    
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
