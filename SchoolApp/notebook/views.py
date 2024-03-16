@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from .models import Grade,Material, Subject
 from django.contrib.auth.decorators import login_required
 from users.forms import User
-from .forms import MaterialForm
+from .forms import MaterialForm,GradeForm,EditGradeForm
 
 # Create your views here.
 
@@ -57,7 +57,6 @@ def createMaterial(request):
                 title=request.POST.get('title'),
                 description=request.POST.get('description'),
                 file=request.FILES['file'],
-                
             )
             return redirect('material-page')
 
@@ -101,17 +100,34 @@ def deleteMaterial(request, pk):
 
 def createGrade(request):
     if request.user.role == 'Teacher':
-        form=MaterialForm()
+        form=GradeForm()
         if request.method == 'POST':
-            Material.objects.create(
-                user=request.user,
-                title=request.POST.get('title'),
-                description=request.POST.get('description'),
-                file=request.FILES['file']
-            )
-
+            form=GradeForm(request.POST)
+            if form.is_valid():
+                grade=form.save(commit=False)
+                grade.teacher=request.user
+                grade.save()
+                return redirect('your-grades')
     else:
         return redirect('home-page')
-    #return render(request,'notebook/materials_create.html',{'form':form})
+    students=User.objects.filter(role='Student')
+    return render(request,'notebook/grades_create.html',{'form':form, 'students':students})
+
+def editGrade(request,pk):
+   def updateGrades(request, user_id):
+    grades = Grade.objects.filter(user_id=user_id)
+    
+    if request.method == 'POST':
+        form = GradeForm(request.POST)
+        if form.is_valid():
+            for grade in grades:
+                grade.grade = form.cleaned_data['grade']
+                grade.save()
+            return redirect('grades')
+    else:
+        form = GradeForm(initial={'grade': grades.first().grade}) if grades.exists() else GradeForm()
+    
+    return render(request, 'notebook/update_grades.html', {'form': form})
+
 
 
