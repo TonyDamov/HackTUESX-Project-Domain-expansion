@@ -21,16 +21,21 @@
         </div>
     {% else %}
         <div class="accordion" id="accordionGrades">
-            {% for subject, student_grades in data.items %}
-                <div class="card custom-card">
-                    <div class="card-header" id="heading{{ forloop.counter }}">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{ forloop.counter }}" aria-expanded="true" aria-controls="collapse{{ forloop.counter }}">
-                                {{ subject }}
-                            </button>
-                        </h2>
-                    </div>
-
+            <div class="card custom-card">
+                <div class="card-header" style="overflow-x: auto;">
+                    <h2 class="mb-0">
+                        <div class="row" style="width: max-content;">
+                            {% for subject, student_grades in data.items %}
+                                <div class="col-auto p-1">
+                                    <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapse{{ forloop.counter }}" aria-expanded="true" aria-controls="collapse{{ forloop.counter }}">
+                                        {{ subject }}
+                                    </button>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </h2>
+                </div>
+                {% for subject, student_grades in data.items %}
                     <div id="collapse{{ forloop.counter }}" class="collapse" aria-labelledby="heading{{ forloop.counter }}" data-parent="#accordionGrades">
                         <div class="card-body">
                             {% for student, grades in student_grades.items %}
@@ -47,13 +52,12 @@
                             {% endfor %}
                         </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
     {% endif %}
 </div>
 
-<!-- Custom CSS -->
 <style>
     .grade-block {
         display: flex;
@@ -74,15 +78,14 @@
     }
 
     .grade {
-        background-color: #333; /* Dark background color for grade boxes */
-        color: #fff; /* Text color */
-        margin-right: 5px;
+        background-color: #333;
+        color: #fff;
         padding: 5px 10px;
         border-radius: 10px;
     }
 
     .student-block {
-        background-color: #ddd; /* Darker box for each student */
+        background-color: #ddd;
         border-radius: 10px;
         padding: 10px;
         margin-bottom: 10px;
@@ -91,7 +94,7 @@
     .student-header {
         font-weight: bold;
         margin-bottom: 5px;
-        background-color: #222; /* Darker box for each student's name */
+        background-color: #222;
         color: #fff;
         padding: 5px 10px;
         border-radius: 10px;
@@ -105,6 +108,29 @@
     .grade-list {
         display: flex;
         flex-wrap: wrap;
+    }
+
+    .custom-link {
+        color: #fff;
+        background-color: #6c757d; /* Gray background color for the link */
+        border: none;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+    .custom-link:hover {
+        background-color: #5a6268; /* Darker gray color on hover */
+    }
+
+    .card-header {
+        overflow-x: auto;
+        scrollbar-width: thin;
+    }
+
+    .p-1 {
+        padding: 0.25rem !important; /* Minimal padding */
     }
 </style>
 {% endblock content %}
