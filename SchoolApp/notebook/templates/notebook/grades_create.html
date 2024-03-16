@@ -1,20 +1,71 @@
 {% extends "notebook/base.html" %}
 {% block content %}
 <div class="container">
-    <h1 class="text-center">Add Material</h1>
-    <a href="{{request.META.HTTP_REFERER}}">Go back</a>
+    <h1 class="text-center mb-4">Add Material</h1>
+    <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-secondary mb-3">Go back</a>
     <div class="row justify-content-center">
         <div class="col-md-6">
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {% for field in form %}
-                <label>{{field.label}}</label>
-                <div>{{field}}</div>
-
+                <div class="form-group">
+                    <label>{{ field.label }}</label>
+                    <div>{{ field }}</div>
+                </div>
                 {% endfor %}
-                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                <button type="submit" class="btn btn-primary btn-lg mt-3">Submit</button>
             </form>
         </div>
     </div>
 </div>
+
+<style>
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .btn-secondary {
+        color: #fff;
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+
+    .btn-secondary:hover {
+        color: #fff;
+        background-color: #5a6268;
+        border-color: #5a6268;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+
+    input[type="text"],
+    textarea,
+    input[type="file"],
+    select,
+    input[type="number"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-top: 6px;
+    }
+
+    button[type="submit"] {
+        width: 100%;
+    }
+
+    label {
+        /* Remove bold styling */
+    }
+</style>
+
 {% endblock content %}

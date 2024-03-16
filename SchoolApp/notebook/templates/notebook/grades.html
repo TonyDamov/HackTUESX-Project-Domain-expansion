@@ -1,8 +1,10 @@
+Sure, here's the code with comments removed:
+
+```html
 {% extends "notebook/base.html" %}
 {% block content %}
 <div class="container">
     <h1 class="text-center mb-4">Grades</h1>
-    <a href="{% url 'create-grade' %}">Add grade</a>
     {% if request.user.role == 'Student' %}
         <div class="row">
             <div class="col-md-6 offset-md-3">
@@ -20,6 +22,7 @@
             </div>
         </div>
     {% else %}
+    <a href="{% url 'create-grade' %}" class="btn btn-dark custom-link mb-3">Add grade</a>
         <div class="accordion" id="accordionGrades">
             <div class="card custom-card">
                 <div class="card-header" style="overflow-x: auto;">
@@ -112,7 +115,7 @@
 
     .custom-link {
         color: #fff;
-        background-color: #6c757d; /* Gray background color for the link */
+        background-color: #6c757d;
         border: none;
         text-decoration: none;
         font-weight: bold;
@@ -121,7 +124,7 @@
     }
 
     .custom-link:hover {
-        background-color: #5a6268; /* Darker gray color on hover */
+        background-color: #5a6268;
     }
 
     .card-header {
@@ -130,7 +133,8 @@
     }
 
     .p-1 {
-        padding: 0.25rem !important; /* Minimal padding */
+        padding: 0.25rem !important;
     }
 </style>
 {% endblock content %}
+```
