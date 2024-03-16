@@ -1,18 +1,136 @@
 {% extends "notebook/base.html" %}
 {% block content %}
-
-    <h2>Grades</h2>
+<div class="container">
+    <h1 class="text-center mb-4">Grades</h1>
     <a href="{% url 'create-grade' %}">Add grade</a>
     {% if request.user.role == 'Student' %}
-        {% for grade in grades %}
-            <p>{{ grade.subject.title }} - {{ grade.grade }}</p>
-        {% endfor %}
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card custom-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Your Grades</h5>
+                        {% for grade in grades %}
+                            <div class="grade-block">
+                                <div class="name-block">{{ grade.subject.title }}</div>
+                                <div class="grade">{{ grade.grade }}</div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
     {% else %}
-        {% for subject, student_grades in data.items %}
-            <p>{{ subject }}</p>
-            {% for student, grades in student_grades.items %}
-                <p>{{ student }} - {{ grades|join:", " }}></p>
-            {% endfor %}
-        {% endfor %}
+        <div class="accordion" id="accordionGrades">
+            <div class="card custom-card">
+                <div class="card-header" style="overflow-x: auto;">
+                    <h2 class="mb-0">
+                        <div class="row" style="width: max-content;">
+                            {% for subject, student_grades in data.items %}
+                                <div class="col-auto p-1">
+                                    <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapse{{ forloop.counter }}" aria-expanded="true" aria-controls="collapse{{ forloop.counter }}">
+                                        {{ subject }}
+                                    </button>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </h2>
+                </div>
+                {% for subject, student_grades in data.items %}
+                    <div id="collapse{{ forloop.counter }}" class="collapse" aria-labelledby="heading{{ forloop.counter }}" data-parent="#accordionGrades">
+                        <div class="card-body">
+                            {% for student, grades in student_grades.items %}
+                                <div class="student-block">
+                                    <div class="student-header">{{ student }}</div>
+                                    <div class="student-body">
+                                        <div class="grade-list">
+                                            {% for grade in grades %}
+                                                <div class="grade">{{ grade }}</div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
     {% endif %}
+</div>
+
+<style>
+    .grade-block {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+
+    .name-block,
+    .grade {
+        padding: 5px 10px;
+        border-radius: 10px;
+        margin-bottom: 5px;
+    }
+
+    .name-block {
+        background-color: #f0f0f0;
+    }
+
+    .grade {
+        background-color: #333;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 10px;
+    }
+
+    .student-block {
+        background-color: #ddd;
+        border-radius: 10px;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .student-header {
+        font-weight: bold;
+        margin-bottom: 5px;
+        background-color: #222;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 10px;
+    }
+
+    .student-body {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .grade-list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .custom-link {
+        color: #fff;
+        background-color: #6c757d; /* Gray background color for the link */
+        border: none;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+    .custom-link:hover {
+        background-color: #5a6268; /* Darker gray color on hover */
+    }
+
+    .card-header {
+        overflow-x: auto;
+        scrollbar-width: thin;
+    }
+
+    .p-1 {
+        padding: 0.25rem !important; /* Minimal padding */
+    }
+</style>
 {% endblock content %}

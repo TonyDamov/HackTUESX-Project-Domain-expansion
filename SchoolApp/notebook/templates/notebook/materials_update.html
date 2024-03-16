@@ -1,38 +1,41 @@
 {% extends "notebook/base.html" %}
 {% block content %}
 <div class="container">
-    <h1 class="text-center">Add Material</h1>
-    <a href="{{request.META.HTTP_REFERER}}">Go back</a>
+    <a href="{{request.META.HTTP_REFERER}}" class="btn btn-secondary mb-3">Go back</a>
     <div class="row justify-content-center">
         <div class="col-md-6">
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
+                <h1 class="text-center mb-4">Update Material</h1>
                 {% for field in form %}
-                    
-                    <label>{{field.label}}</label>
-                    <div>{{field}}</div>
-
+                    <div class="form-group">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                    </div>
                 {% endfor %}
-
                 <button type="submit" class="btn btn-primary btn-block">Submit</button>
             </form>
         </div>
     </div>
 </div>
 
-<!-- Custom CSS -->
 <style>
-    /* Style input fields */
+    .form-group {
+        margin-bottom: 20px;
+    }
     input[type="text"],
     textarea,
-    input[type="file"] {
+    input[type="file"],
+    select {
         width: 100%;
         padding: 8px;
-        border: 1px solid #ccc;
+        border: 1px solid #ced4da;
         border-radius: 4px;
         box-sizing: border-box;
         margin-top: 6px;
-        margin-bottom: 16px;
+    }
+    button[type="submit"] {
+        width: 100%;
     }
 </style>
 {% endblock content %}
